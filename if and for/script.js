@@ -96,3 +96,11 @@ for (i; i <= Math.round(num3 / 2); i++) {
 }
 if (isprime && num3 != 1) console.log(true);
 else console.log(false);
+
+
+
+
+
+
+
+
