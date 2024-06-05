@@ -52,3 +52,29 @@ function splitString(str,delimiter)
     let myArray = str.split(delimiter);
     return myArray;
 }
+
+//task 8 
+let str1="javascript      hello     hi my man laj alfj          salfj hi    i;aj uo";
+function splitString2(str,del)
+{
+    let posdel=0;
+    let word="";
+    let arr=[];
+    for(let i =0 ; i<str.length;i++)
+        {
+            if(str[i] == del)
+                {
+                    word=str.substring(posdel,i);
+                    posdel=i+1;
+                }
+            if(word != "" && str[i] == del)
+                {
+                    arr.push(word);
+                }
+        }
+    if (str.length>0 && word != "") {
+        arr.push(str.substring(posdel))
+    }
+    return arr ;
+}
+console.log(splitString2(str1," "));
