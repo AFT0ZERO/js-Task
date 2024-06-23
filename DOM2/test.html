@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <style>
+        /* Basic styling for the image container and buttons */
+        #imageContainer {
+            width: 500px;
+            height: 300px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 2px solid #ccc;
+            margin-bottom: 20px;
+        }
+
+        #imageContainer img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        #controls {
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Image container div -->
+    <div id="imageContainer">
+        <img id="displayedImage" src="" alt="Image Slider">
+    </div>
+
+    <!-- Controls for the slider -->
+    <div id="controls">
+        <button id="prevButton">Previous</button>
+        <button id="nextButton">Next</button>
+    </div>
+
+    <script>
+        // Array of image URLs
+        const imageUrls = [
+            'https://via.placeholder.com/500x300.png?text=Image+1',
+            'https://via.placeholder.com/500x300.png?text=Image+2',
+            'https://via.placeholder.com/500x300.png?text=Image+3',
+            'https://via.placeholder.com/500x300.png?text=Image+4'
+        ];
+
+        let currentIndex = 0;
+
+        // Get references to the image and buttons
+        const displayedImage = document.getElementById('displayedImage');
+        const prevButton = document.getElementById('prevButton');
+        const nextButton = document.getElementById('nextButton');
+
+        // Function to update the displayed image
+        function updateImage() {
+            displayedImage.src = imageUrls[currentIndex];
+        }
+
+        // Event listener for the next button
+        nextButton.addEventListener('click', function() {
+            currentIndex = (currentIndex + 1) % imageUrls.length;
+            updateImage();
+        });
+
+        // Event listener for the previous button
+        prevButton.addEventListener('click', function() {
+            currentIndex = (currentIndex - 1 + imageUrls.length) % imageUrls.length;
+            updateImage();
+        });
+
+        // Initialize the slider with the first image
+        updateImage();
+    </script>
+</body>
+</html>
